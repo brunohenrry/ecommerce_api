@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+const authRoutes = require ("./routes/authRoutes")
+
+
 // Carregar variáveis de ambiente
 dotenv.config();
 
@@ -12,6 +15,9 @@ app.use(express.json());
 
 // Servir arquivos estáticos
 app.use(express.static('public'));
+
+app.use("/api", authRoutes)
+
 
 // Conectar ao MongoDB
 const connectToDatabase = async () => {
