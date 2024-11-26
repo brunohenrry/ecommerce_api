@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Produtos, Clientes e Pedidos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Sistema de Cadastros</h1>
+            <p>Gerencie produtos, clientes e pedidos</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('produtos')">Produtos</button>
+            <button class="tab-button" onclick="openTab('clientes')">Clientes</button>
+            <button class="tab-button" onclick="openTab('pedidos')">Pedidos</button>
+        </div>
+
+        <!-- Produtos -->
+        <div id="produtos" class="tab-content active">
+            <form id="product-form">
+                <div class="form-group">
+                    <label for="product-name">Nome do Produto</label>
+                    <input type="text" id="product-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Preço</label>
+                    <input type="number" id="product-price" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-description">Descrição</label>
+                    <textarea id="product-description" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn">Cadastrar Produto</button>
+            </form>
+            <div id="product-list" class="data-list"></div>
+        </div>
+
+        <!-- Clientes -->
+        <div id="clientes" class="tab-content">
+            <form id="customer-form">
+                <div class="form-group">
+                    <label for="customer-name">Nome do Cliente</label>
+                    <input type="text" id="customer-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-email">Email</label>
+                    <input type="email" id="customer-email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone">Telefone</label>
+                    <input type="tel" id="customer-phone" class="form-control">
+                </div>
+                <button type="submit" class="btn">Cadastrar Cliente</button>
+            </form>
+            <div id="customer-list" class="data-list"></div>
+        </div>
+
+        <!-- Pedidos -->
+        <div id="pedidos" class="tab-content">
+            <form id="order-form">
+                <div class="form-group">
+                    <label for="order-customer-id">ID do Cliente</label>
+                    <input type="text" id="order-customer-id" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="order-products">IDs dos Produtos</label>
+                    <input type="text" id="order-products" class="form-control" placeholder="Separe os IDs por vírgula" required>
+                </div>
+                <div class="form-group">
+                    <label for="order-total-amount">Valor Total</label>
+                    <input type="number" id="order-total-amount" class="form-control" required>
+                </div>
+                <button type="submit" class="btn">Cadastrar Pedido</button>
+            </form>
+            <div id="order-list" class="data-list"></div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let content of tabContents) {
+                content.classList.remove('active');
+            }
+            
+            // Deactivate all tab buttons
+            const tabButtons = document.getElementsByClassName('tab-button');
+            for (let button of tabButtons) {
+                button.classList.remove('active');
+            }
+            
+            // Show the selected tab content and activate the button
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+<script src="script.js"></script>
+</html>
